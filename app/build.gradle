@@ -1,0 +1,31 @@
+plugins {
+  id 'com.android.application'
+}
+
+android {
+  compileSdk 32
+
+  defaultConfig {
+    applicationId "mwe.downloadmanageroom"
+    minSdk 29
+    targetSdk 32
+    versionCode 1
+    versionName "1.0"
+  }
+  variantFilter {
+    it.ignore = it.buildType.isDebuggable()
+  }
+  signingConfigs {
+    release {
+      storeFile file("dummy.keystore")
+      storePassword "123456"
+      keyAlias "alias"
+      keyPassword "123456"
+    }
+  }
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
+    }
+  }
+}
